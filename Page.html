@@ -21,8 +21,21 @@
 	}
 	make a ui list that will show you options on all available seats
 	add a text box to type in how many seats of that type you will be getting
-	store in a array(to mimic a database)  the choice the user makes and at what time that user made it using Date();.
+	store in a array(to mimic a database)  the choice the user makes and at what time that user made it using Date().
 	*/
+	class Plane()
+	{
+		constructor(_TotalSeats, _TypesOfSeats) {
+			this._TotalSeats = _TotalSeats;
+			this._TypesOfSeats = _TypesOfSeats; 
+		}
+	}
+	class Seat {
+		constructor(_SeatRank, _SeatType) {
+			this._SeatRank = _SeatRank;
+			this._SeatType = _SeatType; 
+		}
+	}
 </script>
 </body>
 </html>
