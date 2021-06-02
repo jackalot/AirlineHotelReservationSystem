@@ -5,7 +5,13 @@
 	<title>Airline or Hotel Reservation System</title>
 </head>
 <body>
-
+<input type="text" id="SeatChoice"> </input>
+<p>Options for these seats.</p>
+	<ol>
+<li>High class</li>
+<li>Middle class</li>
+<li>Low class</li>
+	</ol>
 <script type="text/javascript">
 	/*
 	Prompt: Create a reservation system which books airline seats or hotel rooms. It charges various rates for particular sections of the plane or hotel. Example, first class is going to cost more than coach. Hotel rooms have penthouse suites which cost more. Keep track of when rooms will be available and can be scheduled.
@@ -20,22 +26,41 @@
 		holds the price
 	}
 	make a ui list that will show you options on all available seats
-	add a text box to type in how many seats of that type you will be getting
+	Options:
+	* 1 High class
+	* 2 Middle class 
+	* 3 Low class 
+	add a text box to type in how many seats of that type you will be getting of which type
 	store in a array(to mimic a database)  the choice the user makes and at what time that user made it using Date().
 	*/
-	class Plane()
+
+	class Plane
 	{
 		constructor(_TotalSeats, _TypesOfSeats) {
 			this._TotalSeats = _TotalSeats;
 			this._TypesOfSeats = _TypesOfSeats; 
 		}
+		get addSeats () {
+			return this._TotalSeats;
+		}
+		set addSeats (_seat) {
+			this._TotalSeats += _seat;
+		}
+		
 	}
 	class Seat {
-		constructor(_SeatRank, _SeatType) {
+		constructor(_SeatName, _SeatRank, _Price) {
+			this._SeatName = _SeatName;
 			this._SeatRank = _SeatRank;
-			this._SeatType = _SeatType; 
+			this._Price = _Price; 
 		}
 	}
+	let HighClass = new Seat("HighClass", 1, 20); //There are 5 in total
+	let MiddleClass = new Seat("MiddleClass" ,2, 15); // There are 10 in total
+	let LowClass = new Seat("LowClass" ,2, 10); // There are 15 in total
+	let OurPlane = new Plane();
+	OurPlane.addSeats = HighClass;
+	console.log(OurPlane._TotalSeats);
 </script>
 </body>
 </html>
