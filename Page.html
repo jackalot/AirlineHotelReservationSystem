@@ -47,9 +47,12 @@
 	}
 
 	let HighClass = FillSeats("HighClass", 1, 20, 5); //There are 5 in total
+	document.getElementById("High Class").innerHTML = `High Class: Seats: ${HighClass.AmountOfSeats} Price: ${HighClass.PricePerSeat}`;
 	console.log(HighClass);
 	let MiddleClass = FillSeats("MiddleClass", 2, 15, 10); // There are 10 in total
+	document.getElementById("Middle Class").innerHTML = `Middle Class: Seats: ${MiddleClass.AmountOfSeats} Price: ${MiddleClass.PricePerSeat}`;
 	let LowClass =  FillSeats("LowClass", 3, 10, 10); // There are 15 in total
+	document.getElementById("Low Class").innerHTML = `Low Class: Seats: ${LowClass.AmountOfSeats} Price: ${LowClass.PricePerSeat}`;
 	let OurPlane = new Plane([HighClass, MiddleClass, LowClass]);
 	OurPlane.addSeats = HighClass;
 	console.log(OurPlane._TypesOfSeats);
