@@ -116,7 +116,7 @@
 				}
 			break;
 			case "middleclass":
-			if (_SeatAmount <= HighClass.AmountOfSeats)
+			if (_SeatAmount <= MiddleClass.AmountOfSeats)
 				{
 					MiddleClass.AmountOfSeats -= _SeatAmount;
 					console.log(MiddleClass.AmountOfSeats);
@@ -128,7 +128,7 @@
 				}
 			break;
 			case "lowclass":
-				if (_SeatAmount <= HighClass.AmountOfSeats)
+				if (_SeatAmount <= LowClass.AmountOfSeats)
 				{
 					LowClass.AmountOfSeats -= _SeatAmount;
 					console.log(LowClass.AmountOfSeats);
@@ -136,7 +136,7 @@
 				}				
 				else
 				{
-					document.getElementById("NotEnough").innerHTML = `Middle Class does not have enough enough seats for your reservation, apologies in advance.`;
+					document.getElementById("NotEnough").innerHTML = `Low Class does not have enough enough seats for your reservation, apologies in advance.`;
 				}
 			break;
 		}
