@@ -16,6 +16,7 @@
 <li id="Middle Class">Middle Class</li>
 <li id="Low Class">Low Class</li>
 	</ol>
+<p><strong><em id="Plane Text">Plane Text</em></strong></p>
 <script type="text/javascript">
 	/*
 	Prompt: Create a reservation system which books airline seats or hotel rooms. It charges various rates for particular sections of the plane or hotel. Example, first class is going to cost more than coach. Hotel rooms have penthouse suites which cost more. Keep track of when rooms will be available and can be scheduled.
@@ -53,7 +54,11 @@
 	document.getElementById("Middle Class").innerHTML = `Middle Class: Seats: ${MiddleClass.AmountOfSeats} Price: ${MiddleClass.PricePerSeat}`;
 	let LowClass =  FillSeats("LowClass", 3, 10, 10); // There are 15 in total
 	document.getElementById("Low Class").innerHTML = `Low Class: Seats: ${LowClass.AmountOfSeats} Price: ${LowClass.PricePerSeat}`;
+
 	let OurPlane = new Plane([HighClass, MiddleClass, LowClass]);
+	let SeatsLeft = HighClass.AmountOfSeats + MiddleClass.AmountOfSeats + LowClass.AmountOfSeats;
+	document.getElementById("Plane Text").innerHTML = "Our Plane has the above listings as available options and the amount of the seats left are: " + SeatsLeft;
+
 	OurPlane.addSeats = HighClass;
 	console.log(OurPlane._TypesOfSeats);
 	function FillSeats(_SeatName, _Seatrank, _PricePerSeat, _amountOfSeats)
@@ -98,6 +103,7 @@
 		switch(_Tier)
 		{
 			case "highclass":
+			if () {}
 			HighClass.AmountOfSeats -= _SeatAmount;
 			console.log(HighClass.AmountOfSeats);
 			document.getElementById("High Class").innerHTML = `High Class: Seats: ${HighClass.AmountOfSeats} Price: ${HighClass.PricePerSeat}`;
@@ -112,8 +118,11 @@
 			console.log(LowClass.AmountOfSeats);
 			document.getElementById("Low Class").innerHTML = `Low Class: Seats: ${LowClass.AmountOfSeats} Price: ${LowClass.PricePerSeat}`;
 			break;
-
 		}
+		SeatsLeft = HighClass.AmountOfSeats + MiddleClass.AmountOfSeats + LowClass.AmountOfSeats;
+	document.getElementById("Plane Text").innerHTML = "Our Plane has the above listings as available options and the amount of the seats left are: " + SeatsLeft;
+
+
 	}
 </script>
 </body>
