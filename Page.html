@@ -17,6 +17,7 @@
 <li id="Low Class">Low Class</li>
 	</ol>
 <p><strong><em id="Plane Text">Plane Text</em></strong></p>
+<p id ="NotEnough"> This text is here if you order more seats than available</p>
 <script type="text/javascript">
 	/*
 	Prompt: Create a reservation system which books airline seats or hotel rooms. It charges various rates for particular sections of the plane or hotel. Example, first class is going to cost more than coach. Hotel rooms have penthouse suites which cost more. Keep track of when rooms will be available and can be scheduled.
@@ -103,20 +104,40 @@
 		switch(_Tier)
 		{
 			case "highclass":
-			if () {}
-			HighClass.AmountOfSeats -= _SeatAmount;
-			console.log(HighClass.AmountOfSeats);
-			document.getElementById("High Class").innerHTML = `High Class: Seats: ${HighClass.AmountOfSeats} Price: ${HighClass.PricePerSeat}`;
+				if (_SeatAmount <= HighClass.AmountOfSeats)
+				{
+					HighClass.AmountOfSeats -= _SeatAmount;
+					console.log(HighClass.AmountOfSeats);
+					document.getElementById("High Class").innerHTML = `High Class: Seats: ${HighClass.AmountOfSeats} Price: ${HighClass.PricePerSeat}`;
+				}
+				else
+				{
+				document.getElementById("NotEnough").innerHTML = `High Class does not have enough enough seats for your reservation, apologies in advance.`;
+				}
 			break;
 			case "middleclass":
-			MiddleClass.AmountOfSeats -= _SeatAmount;
-			console.log(MiddleClass.AmountOfSeats);
-			document.getElementById("Middle Class").innerHTML = `Middle Class: Seats: ${MiddleClass.AmountOfSeats} Price: ${MiddleClass.PricePerSeat}`;
+			if (_SeatAmount <= HighClass.AmountOfSeats)
+				{
+					MiddleClass.AmountOfSeats -= _SeatAmount;
+					console.log(MiddleClass.AmountOfSeats);
+					document.getElementById("Middle Class").innerHTML = `Middle Class: Seats: ${MiddleClass.AmountOfSeats} Price: ${MiddleClass.PricePerSeat}`;
+				}
+				else
+				{
+					document.getElementById("NotEnough").innerHTML = `Middle Class does not have enough enough seats for your reservation, apologies in advance.`;
+				}
 			break;
 			case "lowclass":
-			LowClass.AmountOfSeats -= _SeatAmount;
-			console.log(LowClass.AmountOfSeats);
-			document.getElementById("Low Class").innerHTML = `Low Class: Seats: ${LowClass.AmountOfSeats} Price: ${LowClass.PricePerSeat}`;
+				if (_SeatAmount <= HighClass.AmountOfSeats)
+				{
+					LowClass.AmountOfSeats -= _SeatAmount;
+					console.log(LowClass.AmountOfSeats);
+					document.getElementById("Low Class").innerHTML = `Low Class: Seats: ${LowClass.AmountOfSeats} Price: ${LowClass.PricePerSeat}`;
+				}				
+				else
+				{
+					document.getElementById("NotEnough").innerHTML = `Middle Class does not have enough enough seats for your reservation, apologies in advance.`;
+				}
 			break;
 		}
 		SeatsLeft = HighClass.AmountOfSeats + MiddleClass.AmountOfSeats + LowClass.AmountOfSeats;
