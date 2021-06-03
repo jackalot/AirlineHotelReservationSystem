@@ -5,12 +5,16 @@
 	<title>Airline or Hotel Reservation System</title>
 </head>
 <body>
-<input type="text" id="SeatChoice"> </input>
-<p>Options for these seats.</p>
+<input type="text" id="TierChoice"> </input>
+<input type="text" id="SeatAmount"> </input>
+<button class="Submit">Submit</button>
+<p>In the first box, type which tier you would like of seat you would like to choose. 
+	<br>In the second, choose how many seats you would like to take.
+	<br> Then click Submit.</p>
 	<ol>
-<li>High class</li>
-<li>Middle class</li>
-<li>Low class</li>
+<li>High Class</li>
+<li>Middle Class</li>
+<li>Low Class</li>
 	</ol>
 <script type="text/javascript">
 	/*
@@ -59,6 +63,15 @@
 		}
 		return Seat;
 	}
+	/*
+	 Now we get to what happens when a button is pressed
+	*/
+	SubmitBtn = document.querySelector('.Submit');
+	SubmitBtn.addEventListener('click', () =>
+	{
+		let TierInput = document.getElementById("TierChoice").value;
+		let SeatInput = document.getElementById("SeatAmount").value;
+	})
 </script>
 </body>
 </html>
