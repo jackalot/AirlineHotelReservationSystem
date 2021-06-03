@@ -21,7 +21,7 @@
 		holds each type of seat
 
 	}
-	create a Class called Seat {
+	create an object in a function called Seat {
 		holds the rank of the seat
 		holds the price
 	}
@@ -34,33 +34,31 @@
 	store in a array(to mimic a database)  the choice the user makes and at what time that user made it using Date().
 	*/
 
+	
 	class Plane
 	{
-		constructor(_TotalSeats, _TypesOfSeats) {
-			this._TotalSeats = _TotalSeats;
+		constructor(_TypesOfSeats) {
 			this._TypesOfSeats = _TypesOfSeats; 
 		}
-		get addSeats () {
-			return this._TotalSeats;
-		}
-		set addSeats (_seat) {
-			this._TotalSeats += _seat;
-		}
-		
 	}
-	class Seat {
-		constructor(_SeatName, _SeatRank, _Price) {
-			this._SeatName = _SeatName;
-			this._SeatRank = _SeatRank;
-			this._Price = _Price; 
-		}
-	}
-	let HighClass = new Seat("HighClass", 1, 20); //There are 5 in total
-	let MiddleClass = new Seat("MiddleClass" ,2, 15); // There are 10 in total
-	let LowClass = new Seat("LowClass" ,2, 10); // There are 15 in total
-	let OurPlane = new Plane();
+
+	let HighClass = FillSeats("HighClass", 1, 20, 5); //There are 5 in total
+	console.log(HighClass);
+	let MiddleClass = FillSeats("MiddleClass", 2, 15); // There are 10 in total
+	let LowClass =  FillSeats("LowClass", 3, 10); // There are 15 in total
+	let OurPlane = new Plane([HighClass, MiddleClass, LowClass]);
 	OurPlane.addSeats = HighClass;
-	console.log(OurPlane._TotalSeats);
+	console.log(OurPlane._TypesOfSeats);
+	function FillSeats(_SeatName, _Seatrank, _PricePerSeat, _amountOfSeats)
+	{
+		let Seat = {
+		SeatName: _SeatName,
+		Seatrank: _Seatrank,
+		PricePerSeat: _PricePerSeat,
+		AmountOfSeats: _amountOfSeats
+		}
+		return Seat;
+	}
 </script>
 </body>
 </html>
