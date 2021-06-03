@@ -12,9 +12,9 @@
 	<br>In the second, choose how many seats you would like to take.
 	<br> Then click Submit.</p>
 	<ol>
-<li>High Class</li>
-<li>Middle Class</li>
-<li>Low Class</li>
+<li id="High Class">High Class</li>
+<li id="Middle Class">Middle Class</li>
+<li id="Low Class">Low Class</li>
 	</ol>
 <script type="text/javascript">
 	/*
@@ -48,8 +48,8 @@
 
 	let HighClass = FillSeats("HighClass", 1, 20, 5); //There are 5 in total
 	console.log(HighClass);
-	let MiddleClass = FillSeats("MiddleClass", 2, 15); // There are 10 in total
-	let LowClass =  FillSeats("LowClass", 3, 10); // There are 15 in total
+	let MiddleClass = FillSeats("MiddleClass", 2, 15, 10); // There are 10 in total
+	let LowClass =  FillSeats("LowClass", 3, 10, 10); // There are 15 in total
 	let OurPlane = new Plane([HighClass, MiddleClass, LowClass]);
 	OurPlane.addSeats = HighClass;
 	console.log(OurPlane._TypesOfSeats);
@@ -71,7 +71,47 @@
 	{
 		let TierInput = document.getElementById("TierChoice").value;
 		let SeatInput = document.getElementById("SeatAmount").value;
+		//Now Sanitize the inputs so the user doesnt have go "oh no its not capitals with spaces"
+		SeatInt = parseInt(SeatInput);
+		TierText = TierInput.toLowerCase();
+		Space = TierText.indexOf(" ");
+		if(Space === -1)
+		{
+			RemoveSeats(TierText, SeatInput);
+		}
+		else
+		{
+			FirstHalf = TierText.slice(0, Space); //=>high
+			SecondHalf = TierText.slice(Space + 1, TierText.length); //=>class
+			FullText = FirstHalf + SecondHalf; //=>highclass
+			RemoveSeats(FullText, SeatInput);
+		}
 	})
+	//Remove seats as in remove seats from the Seat.AmountOfSeats  
+	function RemoveSeats(_Tier, _SeatAmount)
+	{
+		console.log(_Tier, _SeatAmount);
+
+		switch(_Tier)
+		{
+			case "highclass":
+			HighClass.AmountOfSeats -= _SeatAmount;
+			console.log(HighClass.AmountOfSeats);
+			document.getElementById("High Class").innerHTML = `High Class: Seats: ${HighClass.AmountOfSeats} Price: ${HighClass.PricePerSeat}`;
+			break;
+			case "middleclass":
+			MiddleClass.AmountOfSeats -= _SeatAmount;
+			console.log(MiddleClass.AmountOfSeats);
+			document.getElementById("Middle Class").innerHTML = `Middle Class: Seats: ${MiddleClass.AmountOfSeats} Price: ${MiddleClass.PricePerSeat}`;
+			break;
+			case "lowclass":
+			LowClass.AmountOfSeats -= _SeatAmount;
+			console.log(LowClass.AmountOfSeats);
+			document.getElementById("Low Class").innerHTML = `Low Class: Seats: ${LowClass.AmountOfSeats} Price: ${LowClass.PricePerSeat}`;
+			break;
+
+		}
+	}
 </script>
 </body>
 </html>
